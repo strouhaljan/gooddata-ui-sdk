@@ -1348,6 +1348,30 @@ export interface IThemeColorFamily {
 }
 
 // @beta
+export interface IThemeColorGrayscale {
+    // (undocumented)
+    100: ThemeColor;
+    // (undocumented)
+    200: ThemeColor;
+    // (undocumented)
+    300: ThemeColor;
+    // (undocumented)
+    400: ThemeColor;
+    // (undocumented)
+    50: ThemeColor;
+    // (undocumented)
+    500: ThemeColor;
+    // (undocumented)
+    600: ThemeColor;
+    // (undocumented)
+    700: ThemeColor;
+    // (undocumented)
+    800: ThemeColor;
+    // (undocumented)
+    900: ThemeColor;
+}
+
+// @beta
 export interface IThemeKpi {
     primaryMeasureColor?: ThemeColor;
     secondaryInfoColor?: ThemeColor;
@@ -1361,6 +1385,7 @@ export interface IThemeKpi {
 // @beta
 export interface IThemePalette {
     error?: IThemeColorFamily;
+    gray?: IThemeColorGrayscale;
     info?: IThemeColorFamily;
     primary?: IThemeColorFamily;
     success?: IThemeColorFamily;

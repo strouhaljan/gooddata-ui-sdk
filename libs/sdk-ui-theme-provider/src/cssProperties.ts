@@ -336,7 +336,29 @@ export const clearCssProperties = (): void => {
  *
  * @beta
  */
-export function setCssProperties(theme: ITheme): void {
+export function setCssProperties(fetchedTheme: ITheme): void {
+    const theme: ITheme = {
+        ...fetchedTheme,
+        chart: {
+            textColor: { base: "#fff" },
+            backgroundColor: { base: "#000" },
+        },
+        palette: {
+            ...fetchedTheme.palette,
+            gray: {
+                50: "#fafafa",
+                100: "#f5f5f5",
+                200: "#eeeeee",
+                300: "#e0e0e0",
+                400: "#bdbdbd",
+                500: "#9e9e9e",
+                600: "#757575",
+                700: "#616161",
+                800: "#424242",
+                900: "#212121",
+            },
+        },
+    };
     const cssProperties = [
         ...parseThemeToCssProperties(theme, customParserFunctions),
         ...generateDerivedColors(theme.palette),

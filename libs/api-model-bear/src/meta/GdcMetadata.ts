@@ -155,12 +155,26 @@ export namespace GdcMetadata {
         contrast?: ThemeColor;
     }
 
+    export interface IThemeColorGrayscale {
+        50: ThemeColor;
+        100: ThemeColor;
+        200: ThemeColor;
+        300: ThemeColor;
+        400: ThemeColor;
+        500: ThemeColor;
+        600: ThemeColor;
+        700: ThemeColor;
+        800: ThemeColor;
+        900: ThemeColor;
+    }
+
     export interface IThemePalette {
         primary?: IThemeColorFamily;
         error?: IThemeColorFamily;
         warning?: IThemeColorFamily;
         success?: IThemeColorFamily;
         info?: IThemeColorFamily;
+        gray?: IThemeColorGrayscale;
     }
 
     export interface ITheme extends IMetadataObject {

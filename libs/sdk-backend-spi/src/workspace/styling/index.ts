@@ -7,6 +7,7 @@ export {
     ThemeFontUri,
     ThemeColor,
     IThemeColorFamily,
+    IThemeColorGrayscale,
     IThemeWidgetTitle,
     IThemeTypography,
     IThemePalette,

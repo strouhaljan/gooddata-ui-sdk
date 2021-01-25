@@ -61,6 +61,24 @@ export interface IThemeColorFamily {
 }
 
 /**
+ * Grayscale
+ *
+ * @beta
+ */
+export interface IThemeColorGrayscale {
+    50: ThemeColor;
+    100: ThemeColor;
+    200: ThemeColor;
+    300: ThemeColor;
+    400: ThemeColor;
+    500: ThemeColor;
+    600: ThemeColor;
+    700: ThemeColor;
+    800: ThemeColor;
+    900: ThemeColor;
+}
+
+/**
  * Customizable palette of major colors
  *
  * Inspired by Material UI palette: https://material-ui.com/customization/palette/
@@ -92,6 +110,11 @@ export interface IThemePalette {
      * Used to express info or progress
      */
     info?: IThemeColorFamily;
+
+    /**
+     * Grayscale
+     */
+    gray?: IThemeColorGrayscale;
 }
 
 /**
