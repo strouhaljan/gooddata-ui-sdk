@@ -1606,6 +1606,8 @@ export namespace GdcMetadata {
     // (undocumented)
     export interface IThemePalette {
         // (undocumented)
+        darkMode?: boolean;
+        // (undocumented)
         error?: IThemeColorFamily;
         // (undocumented)
         gray?: IThemeColorGrayscale;

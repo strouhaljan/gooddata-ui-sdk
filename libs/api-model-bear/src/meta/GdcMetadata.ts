@@ -169,6 +169,7 @@ export namespace GdcMetadata {
     }
 
     export interface IThemePalette {
+        darkMode?: boolean;
         primary?: IThemeColorFamily;
         error?: IThemeColorFamily;
         warning?: IThemeColorFamily;

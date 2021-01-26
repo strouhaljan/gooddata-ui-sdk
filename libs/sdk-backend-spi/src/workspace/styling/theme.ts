@@ -87,6 +87,11 @@ export interface IThemeColorGrayscale {
  */
 export interface IThemePalette {
     /**
+     * Determines, whether grayscale palette is used from dark to light or vice versa
+     */
+    darkMode?: boolean;
+
+    /**
      * Used as an accent color for most of the UI elements
      */
     primary?: IThemeColorFamily;

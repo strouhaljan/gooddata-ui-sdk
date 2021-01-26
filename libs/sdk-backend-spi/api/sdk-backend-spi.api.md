@@ -1384,6 +1384,7 @@ export interface IThemeKpi {
 
 // @beta
 export interface IThemePalette {
+    darkMode?: boolean;
     error?: IThemeColorFamily;
     gray?: IThemeColorGrayscale;
     info?: IThemeColorFamily;

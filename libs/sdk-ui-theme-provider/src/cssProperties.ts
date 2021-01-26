@@ -74,6 +74,8 @@ const customParserFunctions: ParserFunction[] = [
         key: "--gd-dashboards-content-kpiWidget-dropShadow",
         fn: (value: boolean) => (value ? DEFAULT_WIDGET_SHADOW : "none"),
     },
+    { key: "--gd-palette-gray", fn: () => undefined },
+    { key: "--gd-palette-darkMode", fn: () => undefined },
 ];
 
 /**
@@ -89,10 +91,11 @@ export function parseThemeToCssProperties(
     for (const [key, value] of Object.entries(object)) {
         const newKey = `${currentKey}-${key}`;
 
-        if (isObject(value)) {
+        const parse = parserFunctions.find((exception) => exception.key === newKey);
+
+        if (isObject(value) && !parse) {
             cssProperties.push(...parseThemeToCssProperties(value, parserFunctions, newKey));
         } else {
-            const parse = parserFunctions.find((exception) => exception.key === newKey);
             const newValue = parse ? parse.fn(value) : value;
             if (newValue !== undefined) {
                 cssProperties.push({ key: newKey, value: newValue });
@@ -313,6 +316,19 @@ const generateDerivedColors = (palette: IThemePalette): CssProperty[] =>
 const generateChartDerivedColors = (chart: IThemeChart): CssProperty[] =>
     (chart && [...getChartDerivedColors(chart)].filter((property) => !!property)) || [];
 
+const generateGrayscalePalette = (palette: IThemePalette): CssProperty[] => {
+    if (!palette?.gray) {
+        return [];
+    }
+
+    const grayPaletteKeys = Object.keys(palette.gray);
+
+    return grayPaletteKeys.map((key, index) => {
+        const shadeOrder = palette?.darkMode ? grayPaletteKeys.length - (index + 1) : index;
+        return getCssProperty(`palette-gray-${shadeOrder}`, palette.gray[key]);
+    });
+};
+
 export const clearCssProperties = (): void => {
     const themePropertiesElement = document.getElementById("gdc-theme-properties");
     themePropertiesElement && document.head.removeChild(themePropertiesElement);
@@ -345,6 +361,7 @@ export function setCssProperties(fetchedTheme: ITheme): void {
         },
         palette: {
             ...fetchedTheme.palette,
+            darkMode: true,
             gray: {
                 50: "#fafafa",
                 100: "#f5f5f5",
@@ -363,6 +380,7 @@ export function setCssProperties(fetchedTheme: ITheme): void {
         ...parseThemeToCssProperties(theme, customParserFunctions),
         ...generateDerivedColors(theme.palette),
         ...generateChartDerivedColors(theme.chart),
+        ...generateGrayscalePalette(theme.palette),
     ];
 
     const styleTag = document.createElement("style");
