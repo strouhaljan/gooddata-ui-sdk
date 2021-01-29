@@ -12,6 +12,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withMultipleScreenshots, withScreenshot } from "../../../_infra/backstopWrapper";
 import { FilterStories } from "../../../_infra/storyGroups";
+import { wrapWithTheme } from "../../themeWrapper";
 
 import "@gooddata/sdk-ui-filters/styles/css/rankingFilter.css";
 
@@ -84,76 +85,89 @@ const attributeDropdownItems: IAttributeDropdownItem[] = [
 storiesOf(`${FilterStories}/RankingFilter`, module)
     .add("dropdown", () => {
         return withMultipleScreenshots(
-            <div style={wrapperStyle} className="screenshot-target">
-                <RankingFilterDropdown
-                    measureItems={measureDropdownItems}
-                    attributeItems={attributeDropdownItems}
-                    filter={rankingFilter}
-                    onApply={action("apply")}
-                    onCancel={action("cancel")}
-                    anchorEl="screenshot-target"
-                />
-            </div>,
+            wrapWithTheme(
+                <div style={wrapperStyle} className="screenshot-target">
+                    <RankingFilterDropdown
+                        measureItems={measureDropdownItems}
+                        attributeItems={attributeDropdownItems}
+                        filter={rankingFilter}
+                        onApply={action("apply")}
+                        onCancel={action("cancel")}
+                        anchorEl="screenshot-target"
+                    />
+                </div>,
+            ),
             dropdownScenarios,
         );
     })
     .add("dropdown with one attribute item", () => {
         return withMultipleScreenshots(
-            <div style={wrapperStyle} className="screenshot-target">
-                <RankingFilterDropdown
-                    measureItems={measureDropdownItems}
-                    attributeItems={[attributeDropdownItems[0]]}
-                    filter={rankingFilter}
-                    onApply={action("apply")}
-                    onCancel={action("cancel")}
-                    anchorEl="screenshot-target"
-                />
-            </div>,
+            wrapWithTheme(
+                <div style={wrapperStyle} className="screenshot-target">
+                    <RankingFilterDropdown
+                        measureItems={measureDropdownItems}
+                        attributeItems={[attributeDropdownItems[0]]}
+                        filter={rankingFilter}
+                        onApply={action("apply")}
+                        onCancel={action("cancel")}
+                        anchorEl="screenshot-target"
+                    />
+                </div>,
+            ),
             dropdownWithOneAttributeItemScenarios,
         );
     })
     .add("dropdown with non default value and long items selected", () => {
         return withScreenshot(
-            <div style={wrapperStyle} className="screenshot-target">
-                <RankingFilterDropdown
-                    measureItems={measureDropdownItems}
-                    attributeItems={attributeDropdownItems}
-                    filter={nonStandardRankingFilter}
-                    onApply={action("apply")}
-                    onCancel={action("cancel")}
-                    anchorEl="screenshot-target"
-                />
-            </div>,
+            wrapWithTheme(
+                <div style={wrapperStyle} className="screenshot-target">
+                    <RankingFilterDropdown
+                        measureItems={measureDropdownItems}
+                        attributeItems={attributeDropdownItems}
+                        filter={nonStandardRankingFilter}
+                        onApply={action("apply")}
+                        onCancel={action("cancel")}
+                        anchorEl="screenshot-target"
+                    />
+                </div>,
+            ),
         );
     })
     .add("dropdown with custom granularity selection disabled", () => {
         return withMultipleScreenshots(
-            <div style={wrapperStyle} className="screenshot-target">
-                <RankingFilterDropdown
-                    measureItems={measureDropdownItems}
-                    attributeItems={attributeDropdownItems}
-                    filter={rankingFilter}
-                    onApply={action("apply")}
-                    onCancel={action("cancel")}
-                    anchorEl="screenshot-target"
-                    customGranularitySelection={{ enable: false, warningMessage: "This item is disabled." }}
-                />
-            </div>,
+            wrapWithTheme(
+                <div style={wrapperStyle} className="screenshot-target">
+                    <RankingFilterDropdown
+                        measureItems={measureDropdownItems}
+                        attributeItems={attributeDropdownItems}
+                        filter={rankingFilter}
+                        onApply={action("apply")}
+                        onCancel={action("cancel")}
+                        anchorEl="screenshot-target"
+                        customGranularitySelection={{
+                            enable: false,
+                            warningMessage: "This item is disabled.",
+                        }}
+                    />
+                </div>,
+            ),
             customGranularityScenarios,
         );
     })
     .add("default button with dropdown", () => {
         return withMultipleScreenshots(
-            <div style={wrapperStyle} className="screenshot-target">
-                <RankingFilter
-                    measureItems={measureDropdownItems}
-                    attributeItems={attributeDropdownItems}
-                    filter={rankingFilter}
-                    onApply={action("apply")}
-                    onCancel={action("cancel")}
-                    buttonTitle="Ranking Filter"
-                />
-            </div>,
+            wrapWithTheme(
+                <div style={wrapperStyle} className="screenshot-target">
+                    <RankingFilter
+                        measureItems={measureDropdownItems}
+                        attributeItems={attributeDropdownItems}
+                        filter={rankingFilter}
+                        onApply={action("apply")}
+                        onCancel={action("cancel")}
+                        buttonTitle="Ranking Filter"
+                    />
+                </div>,
+            ),
             buttonScenarios,
         );
     });

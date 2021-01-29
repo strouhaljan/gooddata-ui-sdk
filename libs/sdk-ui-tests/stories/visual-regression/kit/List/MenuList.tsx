@@ -7,6 +7,7 @@ import { storiesOf } from "@storybook/react";
 import { UiKit } from "../../../_infra/storyGroups";
 
 import "./styles.scss";
+import { wrapWithTheme } from "../../themeWrapper";
 
 const ListExamples = () => (
     <div className="library-component screenshot-target">
@@ -32,4 +33,4 @@ const ListExamples = () => (
     </div>
 );
 
-storiesOf(`${UiKit}/Menu List`, module).add("full-featured", () => <ListExamples />);
+storiesOf(`${UiKit}/Menu List`, module).add("full-featured", () => wrapWithTheme(<ListExamples />));

@@ -14,7 +14,7 @@ $bubble-boxShadow: "0 1px 3px 0 rgba(20, 56, 93, 0.10), 0 2px 9px 0 rgba(20, 56,
 $bubble-help-color: #bbb;
 $bubble-help-color-hover: #999;
 $bubble-borderWidth: 0;
-$bubble-bg-color: transparentize($gd-color-text, 0.05);
+$bubble-bg-color: var(--gd-palette-gray-7, transparentize($gd-default-color-text, 0.05));
 $bubble-secondary-base: var(--gd-palette-primary-base-t10, transparentize($gd-color-highlight, 0.1));
 $bubble-light-base: rgba(255, 255, 255, 0.95);
 $bubble-warning-base: var(--gd-palette-primary-base-t10, transparentize($gd-color-warning-text, 0.1));

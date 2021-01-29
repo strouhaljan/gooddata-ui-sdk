@@ -10,6 +10,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withMultipleScreenshots, withScreenshot } from "../../../_infra/backstopWrapper";
 import { FilterStories } from "../../../_infra/storyGroups";
+import { wrapWithTheme } from "../../themeWrapper";
 
 import "@gooddata/sdk-ui-filters/styles/css/dateFilter.css";
 
@@ -32,25 +33,27 @@ const filterOptions: IDateFilterOptionsByType = {
 storiesOf(`${FilterStories}/DateFilter`, module)
     .add("full-featured", () => {
         return withMultipleScreenshots(
-            <div style={wrapperStyle} className="screenshot-target">
-                <DateFilter
-                    excludeCurrentPeriod={false}
-                    selectedFilterOption={defaultDateFilterOptions.allTime}
-                    filterOptions={filterOptions}
-                    availableGranularities={[
-                        "GDC.time.date",
-                        "GDC.time.month",
-                        "GDC.time.quarter",
-                        "GDC.time.year",
-                    ]}
-                    isEditMode={false}
-                    dateFilterMode="active"
-                    onApply={action("applyClick")}
-                    onCancel={action("cancelClick")}
-                    onOpen={action("onOpen")}
-                    onClose={action("onClose")}
-                />
-            </div>,
+            wrapWithTheme(
+                <div style={wrapperStyle} className="screenshot-target">
+                    <DateFilter
+                        excludeCurrentPeriod={false}
+                        selectedFilterOption={defaultDateFilterOptions.allTime}
+                        filterOptions={filterOptions}
+                        availableGranularities={[
+                            "GDC.time.date",
+                            "GDC.time.month",
+                            "GDC.time.quarter",
+                            "GDC.time.year",
+                        ]}
+                        isEditMode={false}
+                        dateFilterMode="active"
+                        onApply={action("applyClick")}
+                        onCancel={action("cancelClick")}
+                        onOpen={action("onOpen")}
+                        onClose={action("onClose")}
+                    />
+                </div>,
+            ),
             {
                 closed: {},
                 opened: { clickSelector: ".s-date-filter-button", postInteractionWait: 200 },
@@ -67,22 +70,24 @@ storiesOf(`${FilterStories}/DateFilter`, module)
     })
     .add("localized", () => {
         return withMultipleScreenshots(
-            <div style={wrapperStyle} className="screenshot-target">
-                <DateFilter
-                    locale="de-DE"
-                    excludeCurrentPeriod={false}
-                    selectedFilterOption={defaultDateFilterOptions.allTime}
-                    filterOptions={filterOptions}
-                    availableGranularities={[
-                        "GDC.time.date",
-                        "GDC.time.month",
-                        "GDC.time.quarter",
-                        "GDC.time.year",
-                    ]}
-                    isEditMode={false}
-                    dateFilterMode="active"
-                />
-            </div>,
+            wrapWithTheme(
+                <div style={wrapperStyle} className="screenshot-target">
+                    <DateFilter
+                        locale="de-DE"
+                        excludeCurrentPeriod={false}
+                        selectedFilterOption={defaultDateFilterOptions.allTime}
+                        filterOptions={filterOptions}
+                        availableGranularities={[
+                            "GDC.time.date",
+                            "GDC.time.month",
+                            "GDC.time.quarter",
+                            "GDC.time.year",
+                        ]}
+                        isEditMode={false}
+                        dateFilterMode="active"
+                    />
+                </div>,
+            ),
             {
                 closed: {},
                 opened: { clickSelector: ".s-date-filter-button", postInteractionWait: 200 },
@@ -99,15 +104,17 @@ storiesOf(`${FilterStories}/DateFilter`, module)
     })
     .add("dateFormat", () => {
         return withScreenshot(
-            <div style={wrapperStyle} className="screenshot-target">
-                <DateFilter
-                    excludeCurrentPeriod={false}
-                    selectedFilterOption={defaultDateFilterOptions.absoluteForm}
-                    filterOptions={filterOptions}
-                    isEditMode={false}
-                    dateFilterMode="active"
-                    dateFormat="yyyy/MM/dd"
-                />
-            </div>,
+            wrapWithTheme(
+                <div style={wrapperStyle} className="screenshot-target">
+                    <DateFilter
+                        excludeCurrentPeriod={false}
+                        selectedFilterOption={defaultDateFilterOptions.absoluteForm}
+                        filterOptions={filterOptions}
+                        isEditMode={false}
+                        dateFilterMode="active"
+                        dateFormat="yyyy/MM/dd"
+                    />
+                </div>,
+            ),
         );
     });

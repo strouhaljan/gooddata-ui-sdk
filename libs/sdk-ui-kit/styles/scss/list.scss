@@ -142,6 +142,7 @@ $menu-item-icon-width: 30px;
     font-family: $gd-font-primary;
     font-size: 12px;
     text-decoration: none;
+    background: $gd-color-white;
 
     @include text-overflow();
 
@@ -430,7 +431,7 @@ $menu-item-icon-width: 30px;
 
     .public_Scrollbar_face {
         &::after {
-            background-color: transparentize($gd-color-disabled, 0.7);
+            background-color: var(--gd-palette-gray-1, transparentize($gd-default-color-disabled, 0.7));
         }
 
         &Active::after {

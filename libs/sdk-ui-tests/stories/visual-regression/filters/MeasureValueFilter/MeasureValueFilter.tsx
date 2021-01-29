@@ -5,6 +5,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withMultipleScreenshots, withScreenshot } from "../../../_infra/backstopWrapper";
 import { FilterStories } from "../../../_infra/storyGroups";
+import { wrapWithTheme } from "../../themeWrapper";
 
 import "@gooddata/sdk-ui-filters/styles/css/measureValueFilter.css";
 
@@ -26,70 +27,80 @@ const scenarios = {
 storiesOf(`${FilterStories}/MeasureValueFilter`, module)
     .add("full-featured", () => {
         return withMultipleScreenshots(
-            <div style={wrapperStyle} className="screenshot-target">
-                <MeasureValueFilterDropdown
-                    measureIdentifier="localIdentifier"
-                    onApply={action("applyClick")}
-                    onCancel={action("cancelClick")}
-                    anchorEl="screenshot-target"
-                />
-            </div>,
+            wrapWithTheme(
+                <div style={wrapperStyle} className="screenshot-target">
+                    <MeasureValueFilterDropdown
+                        measureIdentifier="localIdentifier"
+                        onApply={action("applyClick")}
+                        onCancel={action("cancelClick")}
+                        anchorEl="screenshot-target"
+                    />
+                </div>,
+            ),
             scenarios,
         );
     })
     .add("with-treat-null-as-option-enabled", () => {
         return withMultipleScreenshots(
-            <div style={wrapperStyle} className="screenshot-target">
-                <MeasureValueFilterDropdown
-                    measureIdentifier="localIdentifier"
-                    onApply={action("applyClick")}
-                    onCancel={action("cancelClick")}
-                    anchorEl="screenshot-target"
-                    displayTreatNullAsZeroOption={true}
-                />
-            </div>,
+            wrapWithTheme(
+                <div style={wrapperStyle} className="screenshot-target">
+                    <MeasureValueFilterDropdown
+                        measureIdentifier="localIdentifier"
+                        onApply={action("applyClick")}
+                        onCancel={action("cancelClick")}
+                        anchorEl="screenshot-target"
+                        displayTreatNullAsZeroOption={true}
+                    />
+                </div>,
+            ),
             scenarios,
         );
     })
     .add("with-treat-null-as-option-enabled-and-checked-by-default", () => {
         return withMultipleScreenshots(
-            <div style={wrapperStyle} className="screenshot-target">
-                <MeasureValueFilterDropdown
-                    measureIdentifier="localIdentifier"
-                    onApply={action("applyClick")}
-                    onCancel={action("cancelClick")}
-                    anchorEl="screenshot-target"
-                    displayTreatNullAsZeroOption={true}
-                    treatNullAsZeroDefaultValue={true}
-                />
-            </div>,
+            wrapWithTheme(
+                <div style={wrapperStyle} className="screenshot-target">
+                    <MeasureValueFilterDropdown
+                        measureIdentifier="localIdentifier"
+                        onApply={action("applyClick")}
+                        onCancel={action("cancelClick")}
+                        anchorEl="screenshot-target"
+                        displayTreatNullAsZeroOption={true}
+                        treatNullAsZeroDefaultValue={true}
+                    />
+                </div>,
+            ),
             scenarios,
         );
     })
     .add("with-disabled-operator-selection", () => {
         return withScreenshot(
-            <div style={wrapperStyle} className="screenshot-target">
-                <MeasureValueFilterDropdown
-                    measureIdentifier="localIdentifier"
-                    onApply={action("applyClick")}
-                    onCancel={action("cancelClick")}
-                    anchorEl="screenshot-target"
-                    enableOperatorSelection={false}
-                />
-            </div>,
+            wrapWithTheme(
+                <div style={wrapperStyle} className="screenshot-target">
+                    <MeasureValueFilterDropdown
+                        measureIdentifier="localIdentifier"
+                        onApply={action("applyClick")}
+                        onCancel={action("cancelClick")}
+                        anchorEl="screenshot-target"
+                        enableOperatorSelection={false}
+                    />
+                </div>,
+            ),
         );
     })
     .add("localized", () => {
         return withMultipleScreenshots(
-            <div style={wrapperStyle} className="screenshot-target">
-                <MeasureValueFilterDropdown
-                    measureIdentifier="localIdentifier"
-                    onApply={action("applyClick")}
-                    onCancel={action("cancelClick")}
-                    locale="de-DE"
-                    anchorEl="screenshot-target"
-                />
-            </div>,
+            wrapWithTheme(
+                <div style={wrapperStyle} className="screenshot-target">
+                    <MeasureValueFilterDropdown
+                        measureIdentifier="localIdentifier"
+                        onApply={action("applyClick")}
+                        onCancel={action("cancelClick")}
+                        locale="de-DE"
+                        anchorEl="screenshot-target"
+                    />
+                </div>,
+            ),
             scenarios,
         );
     });

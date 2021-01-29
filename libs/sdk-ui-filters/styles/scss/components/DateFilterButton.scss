@@ -10,6 +10,10 @@ $gd-dashboards-filterBar-filterButton-backgroundColor: var(
     --gd-dashboards-filterBar-filterButton-backgroundColor,
     "transparent"
 );
+$gd-dashboards-filterBar-filterButton-backgroundColor-hover: var(
+    --gd-palette-gray-0,
+    transparentize($gd-default-color-white, 0.05)
+);
 
 .gd-date-filter-button {
     @include gd-font-base;
@@ -68,7 +72,7 @@ $gd-dashboards-filterBar-filterButton-backgroundColor: var(
     &:hover,
     .drag-preview & {
         &::after {
-            background: transparentize($gd-color-white, 0.05);
+            background: $gd-dashboards-filterBar-filterButton-backgroundColor-hover;
         }
     }
 

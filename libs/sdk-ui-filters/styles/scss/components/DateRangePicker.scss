@@ -4,7 +4,9 @@
 
 $gd-date-range-picker-hover-bgcolor: $is-focused-background;
 $gd-date-range-picker-interval-bgcolor: var(--gd-palette-primary-lightest, lighten($gd-color-highlight, 45%));
-$gd-date-range-picker-shadow-color: #1f354a;
+$gd-date-range-picker-shadow-color: var(--gd-palette-gray-2, transparentize(#1f354a, 0.85));
+$gd-date-range-picker-input-bgcolor: var(--gd-palette-gray-0, $gd-color-text-light);
+$gd-date-range-picker-picker-bgcolor: var(--gd-palette-gray-0, $gd-color-white);
 
 $gd-color-warning-text: #888;
 
@@ -29,6 +31,7 @@ $gd-day-picker-width: 268px;
 
         & &-field {
             padding-left: 36px;
+            background: $gd-date-range-picker-input-bgcolor;
 
             @media #{$medium-up} {
                 width: 120px;
@@ -49,7 +52,7 @@ $gd-day-picker-width: 268px;
             &[value=""]::before {
                 content: attr(placeholder);
                 margin-right: 5px;
-                color: transparentize($gd-color-link, 0.25);
+                color: var(--gd-palette-gray-4, transparentize($gd-default-color-link, 0.25));
             }
 
             @media #{$medium-up} {
@@ -86,8 +89,8 @@ $gd-day-picker-width: 268px;
         left: 0;
         width: $gd-day-picker-width;
         padding: 20px 15px 15px;
-        box-shadow: 0 2px 5px 0 transparentize($gd-date-range-picker-shadow-color, 0.85);
-        background: $gd-color-white;
+        box-shadow: 0 2px 5px 0 $gd-date-range-picker-shadow-color;
+        background: $gd-date-range-picker-picker-bgcolor;
         user-select: none;
 
         .DayPicker {
@@ -166,7 +169,7 @@ $gd-day-picker-width: 268px;
             font-weight: 400;
             font-size: 17px;
             text-align: center;
-            color: #000;
+            color: $gd-color-dark;
             cursor: default;
         }
 
