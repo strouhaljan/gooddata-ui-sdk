@@ -5,8 +5,6 @@
 $gd-date-range-picker-hover-bgcolor: $is-focused-background;
 $gd-date-range-picker-interval-bgcolor: var(--gd-palette-primary-lightest, lighten($gd-color-highlight, 45%));
 $gd-date-range-picker-shadow-color: var(--gd-palette-gray-2, transparentize(#1f354a, 0.85));
-$gd-date-range-picker-input-bgcolor: var(--gd-palette-gray-0, $gd-color-text-light);
-$gd-date-range-picker-picker-bgcolor: var(--gd-palette-gray-0, $gd-color-white);
 
 $gd-color-warning-text: #888;
 
@@ -31,7 +29,7 @@ $gd-day-picker-width: 268px;
 
         & &-field {
             padding-left: 36px;
-            background: $gd-date-range-picker-input-bgcolor;
+            background: $gd-color-white;
 
             @media #{$medium-up} {
                 width: 120px;
@@ -90,7 +88,7 @@ $gd-day-picker-width: 268px;
         width: $gd-day-picker-width;
         padding: 20px 15px 15px;
         box-shadow: 0 2px 5px 0 $gd-date-range-picker-shadow-color;
-        background: $gd-date-range-picker-picker-bgcolor;
+        background: $gd-color-white;
         user-select: none;
 
         .DayPicker {

@@ -17,7 +17,8 @@ $gd-color-warning-text: #f18600;
 // gray colors
 $gd-default-color-white: #fff;
 $gd-color-white: var(--gd-variable-that-does-not-exist, var(--gd-palette-gray-0, $gd-default-color-white));
-$gd-color-light: #fcfcfd;
+$gd-default-color-light: #fcfcfd;
+$gd-color-light: var(--gd-palette-gray-1, $gd-default-color-light);
 $gd-default-color-disabled: #b0beca;
 $gd-color-disabled: var(--gd-palette-gray-4, $gd-default-color-disabled);
 $gd-default-color-state-blank: #94a1ad;

@@ -11,7 +11,7 @@ $button-small-icon-width: 16px;
 // Gray colors
 $button-action-color-hover: $gd-color-text;
 
-$button-normal-bg: var(--gd-palette-gray-1, $gd-color-light);
+$button-normal-bg: $gd-color-light;
 $button-normal-color: var(--gd-palette-gray-5, #778491);
 $button-normal-border-color: var(--gd-palette-gray-3, #ccd8e2);
 $button-normal-hover-bg: var(--gd-palette-gray-1, #f5f8fa);
@@ -30,8 +30,8 @@ $button-normal-hover-box-shadow: var(
 );
 
 $button-shadow-color: #14385d;
-$button-shadow-lighter: transparentize($button-shadow-color, 0.91);
-$button-shadow-darker: transparentize($button-shadow-color, 0.85);
+$button-shadow-lighter: var(--gd-palette-gray-1, transparentize($button-shadow-color, 0.91));
+$button-shadow-darker: var(--gd-palette-gray-2, transparentize($button-shadow-color, 0.85));
 
 // Branded colors calculation
 // primary color
